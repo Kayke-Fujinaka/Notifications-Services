@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
+import { IsNotEmpty, IsUUID, Length } from 'class-validator';
 
 export class CreateNotificationBody {
   @IsNotEmpty()
@@ -6,10 +6,9 @@ export class CreateNotificationBody {
   recipientId: string;
 
   @IsNotEmpty()
-  @IsString()
+  @Length(5, 250)
   content: string;
 
   @IsNotEmpty()
-  @IsString()
   category: string;
 }
