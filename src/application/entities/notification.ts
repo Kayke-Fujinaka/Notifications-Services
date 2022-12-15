@@ -7,6 +7,7 @@ export interface NotificationProps {
   content: Content;
   category: string;
   readAt?: Date | null;
+  canceledAt?: Date | null;
   createdAt: Date;
 }
 
@@ -58,18 +59,15 @@ export class Notification {
     return this.props.readAt;
   }
 
+  public cancel() {
+    this.props.canceledAt = new Date();
+  }
+
+  public get canceledAt(): Date | null | undefined {
+    return this.props.readAt;
+  }
+
   public get createdAt(): Date {
     return this.props.createdAt;
   }
 }
-
-// interface LengthValidationProps {
-//   value: string;
-//   max: number;
-// }
-
-// const hasLengthLess = ({ value, max }: LengthValidationProps) =>
-//   value.length < max;
-
-// if (hasLengthLess({ value: content, max: 5 }))
-//   throw new Error('Content Length must be bellow 5');
